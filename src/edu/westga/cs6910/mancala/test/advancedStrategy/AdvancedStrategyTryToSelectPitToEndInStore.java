@@ -34,5 +34,35 @@ public class AdvancedStrategyTryToSelectPitToEndInStore {
 		int[] theBoard = {0, 0, 0, 0, 0, 0, 1, 0};
 		assertEquals(6, this.theStrategy.selectPit(theBoard));
 	}
+	
+	/***
+	 * Test for the situation where the pit closest to the store
+	 * has a stone and the second closest pit also has stones.
+	 */
+	@Test
+	public void testShouldReturnClosestPitWhenPitOnlyHasOneStone() {
+		int[] theBoard = {0, 0, 0, 0, 0, 2, 1, 0};
+		assertEquals(6, this.theStrategy.selectPit(theBoard));
+	}
+	
+	/***
+	 * Test for the situation where the pit closest to the store
+	 * has a stone and the second closest pit also has stones.
+	 */
+	@Test
+	public void testShouldReturnSecondClosestPitWith2StonesWhenFirstPitEmpty() {
+		int[] theBoard = {0, 0, 0, 0, 0, 2, 0, 0};
+		assertEquals(5, this.theStrategy.selectPit(theBoard));
+	}
+	
+	/***
+	 * Test for the situation where the pit closest to the store
+	 * has a stone and the second closest pit also has stones.
+	 */
+	@Test
+	public void testShouldReturnThirdPitWith2StonesWhenOtherPitEmpty() {
+		int[] theBoard = {0, 0, 0, 0, 2, 0, 0, 0};
+		assertEquals(4, this.theStrategy.selectPit(theBoard));
+	}
 
 }
