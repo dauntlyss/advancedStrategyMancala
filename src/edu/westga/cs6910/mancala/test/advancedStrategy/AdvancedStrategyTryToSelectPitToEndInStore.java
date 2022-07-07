@@ -60,7 +60,7 @@ public class AdvancedStrategyTryToSelectPitToEndInStore {
 	 * has a stone and the second closest pit also has stones.
 	 */
 	@Test
-	public void testShouldReturnThirdPitWith2StonesWhenOtherPitEmpty() {
+	public void testShouldReturnThirdPitWith2StonesWhenOtherPitsEmpty() {
 		int[] theBoard = {0, 0, 0, 0, 2, 0, 0, 0};
 		assertEquals(4, this.theStrategy.selectPit(theBoard));
 	}

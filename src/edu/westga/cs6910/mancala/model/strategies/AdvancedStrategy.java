@@ -12,11 +12,15 @@ public class AdvancedStrategy implements SelectStrategy {
 	public int selectPit(int[] theBoard) {
 		int closestPit = theBoard.length - 2;
 		if (theBoard[closestPit] == 1) {
-			return 6;
+			return closestPit;
 		}
 		
-		if (theBoard[closestPit -1] == 2) {
-			return 5;
+		if (theBoard[closestPit - 1] == 2) {
+			return closestPit - 1;
+		}
+		
+		if (theBoard[closestPit - 2] == 3) {
+			return closestPit - 2;
 		}
 		
 		return this.selectClosestPitWithStones(theBoard);
