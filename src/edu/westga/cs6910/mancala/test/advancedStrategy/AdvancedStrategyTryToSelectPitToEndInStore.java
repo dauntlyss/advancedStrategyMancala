@@ -64,5 +64,32 @@ public class AdvancedStrategyTryToSelectPitToEndInStore {
 		int[] theBoard = {0, 0, 0, 0, 2, 0, 0, 0};
 		assertEquals(4, this.theStrategy.selectPit(theBoard));
 	}
+	
+	/***
+	 * Test for the situation where the each pit has the same amount of stones.
+	 */
+	@Test
+	public void testShouldReturnSecondPitWhenAllPitsHave2Stones() {
+		int[] theBoard = {0, 0, 0, 0, 2, 2, 2, 0};
+		assertEquals(5, this.theStrategy.selectPit(theBoard));
+	}
+	
+	/***
+	 * Test for the situation where the each pit has an opportune amount of stones.
+	 */
+	@Test
+	public void testShouldReturnFirstPitWhenAllPitsReturnAnotherTurn() {
+		int[] theBoard = {0, 0, 0, 0, 3, 2, 1, 0};
+		assertEquals(6, this.theStrategy.selectPit(theBoard));
+	}
+	
+	/***
+	 * Test for the situation where no pit has an opportune amount of stones.
+	 */
+	@Test
+	public void testShouldReturnFirstPitWhenNoPitsReturnAnotherTurn() {
+		int[] theBoard = {0, 0, 0, 0, 4, 7, 2, 0};
+		assertEquals(6, this.theStrategy.selectPit(theBoard));
+	}
 
 }

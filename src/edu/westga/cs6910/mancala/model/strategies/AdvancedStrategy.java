@@ -11,16 +11,19 @@ public class AdvancedStrategy implements SelectStrategy {
 	@Override
 	public int selectPit(int[] theBoard) {
 		int closestPit = theBoard.length - 2;
-		if (theBoard[closestPit] == 1) {
-			return closestPit;
-		}
+		for (int length = 1; length < (theBoard.length / 2) - 1; length++) {
+			if (theBoard[closestPit] == length) {
+				return closestPit;
+			}
 		
-		if (theBoard[closestPit - 1] == 2) {
-			return closestPit - 1;
-		}
+			if (theBoard[closestPit - 1] == (theBoard.length / 2) - 2) {
+				System.out.println(length);
+				return closestPit - 1;
+			}
 		
-		if (theBoard[closestPit - 2] == 3) {
-			return closestPit - 2;
+			if (theBoard[closestPit - 2] == (theBoard.length / 2) - 1) {
+				return closestPit - 2;
+			}
 		}
 		
 		return this.selectClosestPitWithStones(theBoard);
