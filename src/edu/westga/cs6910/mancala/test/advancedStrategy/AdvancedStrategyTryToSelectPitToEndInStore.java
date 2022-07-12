@@ -47,7 +47,8 @@ public class AdvancedStrategyTryToSelectPitToEndInStore {
 	
 	/***
 	 * Test for the situation where the pit closest to the store
-	 * has a stone and the second closest pit also has stones.
+	 * has no stone and the second closest pit has stones to offer
+	 * another turn.
 	 */
 	@Test
 	public void testShouldReturnSecondClosestPitWith2StonesWhenFirstPitEmpty() {
@@ -56,8 +57,7 @@ public class AdvancedStrategyTryToSelectPitToEndInStore {
 	}
 	
 	/***
-	 * Test for the situation where the pit closest to the store
-	 * has a stone and the second closest pit also has stones.
+	 * Test for the situation where only one pit contains stones.
 	 */
 	@Test
 	public void testShouldReturnThirdPitWith2StonesWhenOtherPitsEmpty() {
