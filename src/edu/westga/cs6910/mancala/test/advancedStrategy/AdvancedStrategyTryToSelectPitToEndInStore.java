@@ -91,5 +91,24 @@ public class AdvancedStrategyTryToSelectPitToEndInStore {
 		int[] theBoard = {0, 0, 0, 0, 4, 7, 2, 0};
 		assertEquals(6, this.theStrategy.selectPit(theBoard));
 	}
-
+	
+	/**
+	 * Test to ensure when last stone lands in empty pit on computer's side 
+	 * a capture is performed.
+	 */
+	@Test
+	public void testShouldShowWhenAnotherTurnIsNotPossibleCaptureIsPriortized() {
+		int[] theBoard = {0, 0, 0, 0, 5, 7, 2, 0};
+		assertEquals(5, this.theStrategy.selectPit(theBoard));
+	}
+	
+	/**
+	 * Test to ensure when last stone lands in empty pit on computer's side 
+	 * a capture is performed.
+	 */
+	@Test
+	public void testShouldShowWhenAnotherTurnIsNotPossibleCaptureMoveIsPriortized() {
+		int[] theBoard = {4, 2, 2, 0, 1, 0, 3, 0};
+		assertEquals(4, this.theStrategy.selectPit(theBoard));
+	}
 }

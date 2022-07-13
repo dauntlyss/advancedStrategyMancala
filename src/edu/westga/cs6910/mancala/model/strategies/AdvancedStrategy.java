@@ -12,12 +12,14 @@ public class AdvancedStrategy implements SelectStrategy {
 	public int selectPit(int[] theBoard) {
 		int closestPit = theBoard.length - 2;
 		int stonesNeeded = 1;
+		int store = theBoard.length - 1;
 
 		while (closestPit > theBoard.length / 2 - 1) {
 			if (theBoard[closestPit] == stonesNeeded) {
 				return closestPit;
-			} else if (stonesNeeded == 4) {
-				this.captureFromOppositePit(theBoard);
+			} else if (theBoard[closestPit] != theBoard[store]) {
+//				theBoard[theBoard.length - 2 - (closestPit + theBoard[closestPit])] == 0
+				return closestPit;
 			} 
 			closestPit--;
 			stonesNeeded++;
@@ -34,9 +36,5 @@ public class AdvancedStrategy implements SelectStrategy {
 			}
 		}
 		return closestPit;
-	}
-	
-	private int captureFromOppositePit(int[] theBoard) {
-		return 1;
 	}
 }
