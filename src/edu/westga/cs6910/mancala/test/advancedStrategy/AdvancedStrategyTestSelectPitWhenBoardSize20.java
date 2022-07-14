@@ -41,8 +41,8 @@ public class AdvancedStrategyTestSelectPitWhenBoardSize20 {
 	 */
 	@Test
 	public void testShouldReturnFurthestPitWhenItWillResultInAnotherTurn() {
-		int[] theBoard = {0, 0, 0, 0, 0, 0, 1, 1, 1, 5, 9, 0, 0, 0, 0, 0, 0, 2, 8, 0};
-		assertEquals(17, this.theStrategy.selectPit(theBoard));
+		int[] theBoard = {0, 0, 0, 0, 0, 0, 1, 1, 1, 5, 9, 0, 0, 0, 0, 0, 0, 0, 8, 0};
+		assertEquals(10, this.theStrategy.selectPit(theBoard));
 	}
 	
 	/***
@@ -71,16 +71,26 @@ public class AdvancedStrategyTestSelectPitWhenBoardSize20 {
 	 */
 	@Test
 	public void testShouldReturnNonEmptyPitWhenOtherPitsEmpty() {
-		int[] theBoard = {0, 0, 0, 0, 0, 0, 1, 1, 1, 5, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0};
-		assertEquals(17, this.theStrategy.selectPit(theBoard));
+		int[] theBoard = {0, 0, 0, 0, 0, 0, 1, 1, 1, 5, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0};
+		assertEquals(11, this.theStrategy.selectPit(theBoard));
+	}
+
+	/***
+	 * Test for the situation where the each pit has the same amount of stones.
+	 */
+	@Test
+	public void testShouldReturnFifthPitWhenAllPitsHave5Stones() {
+		int[] theBoard = {0, 0, 0, 0, 0, 0, 1, 1, 1, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0};
+		assertEquals(14, this.theStrategy.selectPit(theBoard));
 	}
 	
 	/***
 	 * Test for the situation where no pit has an opportune amount of stones.
 	 */
 	@Test
-	public void testShouldReturnFirstPitWhenNoPitsReturnAnotherTurn() {
-		int[] theBoard = {0, 0, 0, 0, 0, 0, 1, 1, 1, 5, 19, 18, 17, 16, 15, 14, 13, 12, 11, 0};
-		assertEquals(17, this.theStrategy.selectPit(theBoard));
+	public void testShouldReturnFirstPitWhenNoPitsReturnAnotherTurnOrCapture() {
+		int[] theBoard = {0, 0, 0, 0, 0, 0, 1, 1, 1, 5, 3, 1, 1, 3, 1, 1, 13, 12, 11, 0};
+		assertEquals(18, this.theStrategy.selectPit(theBoard));
 	}
+	
 }
